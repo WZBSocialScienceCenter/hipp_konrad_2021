@@ -9,4 +9,6 @@ The code is divided into two parts:
 1. `collection` contains mainly Python code used for data collection
 2. `analysis` contains R code used for data analysis
 
+Each folder contains dedicated README files with more detailed explanations.
+
 Please note that the raw data is not available in this repository due to data privacy concerns. Aggregated data as used in the analysis is available in the `analysis/aggregdata` folder.
