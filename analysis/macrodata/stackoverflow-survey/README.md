@@ -1,1 +1,1 @@
-This folder is empty in the git repository. It's data is in ../stackoverflow-survey.zip.
+This folder is empty in the git repository. Its data is in ../stackoverflow-survey.zip.
