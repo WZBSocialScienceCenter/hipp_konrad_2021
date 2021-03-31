@@ -14,7 +14,7 @@ library(lmtest)
 
 #### prepare data ####
 
-data <- read.csv("finaldata_unbalanced.csv") %>%
+data <- read.csv("aggregdata/finaldata_unbalanced.csv") %>%
   rename(country_char  = country_code) %>% 
   mutate(country_code  = as.numeric(as.factor(country_char)),
          closedschools = ifelse(covid_school_closing <= 1, 0, 1),

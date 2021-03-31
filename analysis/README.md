@@ -1,8 +1,8 @@
-# Data collection scripts
+# Data analysis scripts
 
-for paper "Men’s and women’s productivity before and during the COVID-19 pandemic: Evidence from a cross-country comparison of software developers"
+for paper *Men’s and women’s productivity before and during the COVID-19 pandemic: Evidence from a cross-country comparison of software developers*.
 
-March 2021, Lena Hipp <lena.hipp@wzb.eu> and Markus Konrad <markus.konrad@wzb.eu>
+April 2021, Lena Hipp <lena.hipp@wzb.eu> and Markus Konrad <markus.konrad@wzb.eu>
 
 This folder holds the R scripts used for data preparation, figure/tables generation and analysis.
 
@@ -22,6 +22,7 @@ This folder holds the R scripts used for data preparation, figure/tables generat
 - uses raw individual GitHub contributions data and user profile data as from Python scripts in the "collection" folder
 - generates weekly aggregates per country and gender
 - result is written to `aggregdata/contribs_weekly_gender.csv`
+- **note that this requires the raw data to be present, which is not included in the repository for data privacy reasons**
 
 #### (1.2) `forecasts.R`: Create forecasts from aggregated GitHub contributions time series data
 
@@ -40,23 +41,28 @@ This folder holds the R scripts used for data preparation, figure/tables generat
 - results are written to `aggregdata/finaldata_balanced.csv` and `aggregdata/finaldata_unbalanced.csv`
 
 
-### (2) Scripts to generate figures and tables
+### (2) Analysis scripts
 
-#### (2.1) `finalplots.R`: Script to generate plots and tables used in the paper
+#### (2.1) `finalplots.R`: Script to generate descriptive plots and tables used in the paper
 
 - generates plots and tables used in the paper
 - output is saved to `articleplots` and `tables`
 
 
-### (3) Analysis scripts
-
-#### (3.1) `descriptive_info.R`: Descriptive statistics for GitHub user profile data and contributions data at different levels
+#### (2.2) `descriptive_info.R`: Descriptive statistics for GitHub user profile data and contributions data at different levels
 
 - calculate descriptive information used in the paper
 - output is stored to `summarydata` folder
+- **note that this requires the raw data to be present, which is not included in the repository for data privacy reasons**
+
+#### (2.3) `twoway_fe_models.R`: Two-way fixed effects models
+
+- fit two-way fixed effects models with clustered standard errors
+- calculate margins and generate plots stored in `articleplots`
+- generate model summeries displayed in table 4 in paper
 
 
-### (4) R scripts with helper functions
+### (3) R scripts with helper functions
 
 - `dataprep.R`: Common data preparation functions
 - `plot_utils.R`: Plotting utility functions

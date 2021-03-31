@@ -14,7 +14,7 @@ source('dataprep.R')
 
 # country-specific macro data
 
-LOW_OBS_THRESH = 30
+LOW_OBS_THRESH <- 30
 
 # country-level data
 ageatbirth <- read.csv('macrodata/cia_factbook_ageatbirth.csv', stringsAsFactors = FALSE)
@@ -123,10 +123,14 @@ contribs_diff_time_balanced <- left_join(contribs_diff_time, limit_week_per_gend
 count(contribs_diff_time_balanced, country_code, gender) %>% left_join(limit_week_per_gender, by = 'gender') %>%
   mutate(check = n == limit_week) %>% pull(check) %>% all() %>% stopifnot()
 
+count(contribs_diff_time, country_code, gender)
+
 contribs_diff_time <- group_by(contribs_diff_time, country_code, gender) %>%
   mutate(time = week / n(),   # time as continuous value since start for each country and gender) %>%     
          time2 = time^2) %>%
   ungroup()
+
+count(contribs_diff_time_balanced, country_code, gender)
 
 contribs_diff_time_balanced <- group_by(contribs_diff_time_balanced, country_code, gender) %>%
   mutate(time = week / n(),   # time as continuous value since start for each country and gender) %>%     
@@ -136,7 +140,7 @@ contribs_diff_time_balanced <- group_by(contribs_diff_time_balanced, country_cod
 group_by(contribs_diff_time_balanced, country_code, gender) %>%
   summarise(min_t = min(time), max_t = max(time)) %>%
   ungroup() %>%
-  mutate(check = (min_t == 0.05 & max_t == 1)) %>%
+  mutate(check = (min_t == 1/20 & max_t == 1)) %>%
   pull(check) %>% all() %>% stopifnot()
 
 
